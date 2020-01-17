@@ -1,0 +1,54 @@
+{
+    "service": {
+        "name": "moleculer-example"
+    },
+    "security": {
+        "sessionRequestExpiry": {
+            "$env": "SECURITY_SESSION_REQUEST_EXPIRY",
+            "$default": 5
+        },
+        "jwtExpiry": {
+            "$env": "SECURITY_JWT_EXPIRY",
+            "$default": 10500
+        },
+        "jwt": {
+            "key": {
+                "$env": "NODE_ENV",
+                "$default": "57gggyvsww81mtn6xaa5oc6uhwja9ue9"
+            },
+            "tokenType": "bearer",
+            "payloadKey": false,
+            "cookieKey": false,
+            "verifyOptions": {
+                "algorithms": [ "HS256" ],
+                "issuer": {
+                    "$filter": { "$env": "NODE_ENV" },
+                    "qa": "https://grappus.com/api/auth",
+                    "dev": false,
+                    "$default": "https://grappus.com/api/auth"
+                },
+                "audience": {
+                    "$filter": { "$env": "NODE_ENV" },
+                    "qa": [ "https://grappus.com/api" ],
+                    "dev": false,
+                    "$default": [ "https://grappus.com/api" ]
+                }
+            }
+        }
+    },
+    "persistence": {
+        "mongo": {
+            "host": {
+                "$env": "PERSISTENCE_MONGO_HOST",
+                "$default": "mongodb://localhost:27017"
+            },
+            "user": { "$env": "PERSISTENCE_MONGO_USERNAME", "$default": "root" },
+            "pass": { "$env": "PERSISTENCE_MONGO_PASSWORD", "$default": "password" },
+            "useNewUrlParser": true,
+            "useUnifiedTopology": true,
+            "keepAlive": true,
+            "dbName": { "$env": "PERSISTENCE_MONGO_DB", "$default": "moleculer-example" },
+            "replicaSet": { "$env": "PERSISTENCE_MONGO_REPLICA_SET" }
+        }
+    }
+}
