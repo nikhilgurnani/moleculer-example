@@ -26,6 +26,6 @@ You can use custom values of env variables and start the application by simply:
 
 This will set the environment variable(s) and starts the application on port 3000.
 ##  Supporting
-Moleculer-Example is an open source project. It is free to use for your personal learning. Leave a start on Github if it helped you. 😌
+Moleculer-Example is an open source project. It is free to use for your personal learning. Leave a star on Github if it helped you. 😌
 
 Thank you very much!
